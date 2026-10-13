@@ -21,6 +21,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Conver to lowercase
+        id: image
+        run: echo "image=ghcr.io/${{github.repository,,}}:latest" >> "$GITHUB_OUTPUT"
 
       - name: Construire et publier l'image
         uses: docker/build-push-action@v6
