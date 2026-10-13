@@ -18,4 +18,3 @@ def test_multiplication():
     assert Calculator().multiplication(4, 3) == 12
 def test_division():
     assert Calculator().division(10, 2) == 5
-    
