@@ -23,11 +23,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Conver to lowercase
         id: image
-        run: echo "image=ghcr.io/${{github.repository,,}}:latest" >> "$GITHUB_OUTPUT"
+        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
 
       - name: Construire et publier l'image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/${{ steps.image.outputs.name }}:latest
